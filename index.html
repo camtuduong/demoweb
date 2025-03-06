@@ -3,14 +3,316 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Website Đơn Giản</title>
-    <link rel="stylesheet" href="style.css" />
+    <title>Game Con Rắn</title>
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 20px;
+      }
+
+      h1 {
+        color: #333;
+        margin-bottom: 10px;
+      }
+
+      .game-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 20px;
+      }
+
+      canvas {
+        border: 2px solid #333;
+        background-color: #222;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .score-container {
+        margin-top: 10px;
+        font-size: 20px;
+        color: #333;
+      }
+
+      .controls {
+        margin-top: 20px;
+        background-color: #fff;
+        padding: 10px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        max-width: 400px;
+      }
+
+      button {
+        padding: 8px 16px;
+        margin: 5px;
+        font-size: 16px;
+        cursor: pointer;
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        border-radius: 4px;
+      }
+
+      button:hover {
+        background-color: #45a049;
+      }
+    </style>
   </head>
   <body>
-    <div class="container">
-      <h1>Chào mừng bạn đến với website!</h1>
-      <button id="changeColorBtn">Đổi màu nền</button>
+    <h1>Game Con Rắn</h1>
+    <div class="game-container">
+      <canvas id="gameCanvas" width="400" height="400"></canvas>
+      <div class="score-container">
+        <span>Điểm: <span id="score">0</span></span>
+      </div>
+      <div class="controls">
+        <p>Sử dụng các phím mũi tên hoặc WASD để di chuyển con rắn.</p>
+        <button id="startBtn">Bắt Đầu</button>
+        <button id="resetBtn">Chơi Lại</button>
+      </div>
     </div>
-    <script src="script.js"></script>
+
+    <script>
+      // Lấy các phần tử
+      const canvas = document.getElementById("gameCanvas");
+      const ctx = canvas.getContext("2d");
+      const scoreElement = document.getElementById("score");
+      const startBtn = document.getElementById("startBtn");
+      const resetBtn = document.getElementById("resetBtn");
+
+      // Kích thước của mỗi ô
+      const gridSize = 20;
+      const tileCount = canvas.width / gridSize;
+
+      // Trạng thái trò chơi
+      let gameRunning = false;
+      let gameOver = false;
+
+      // Tốc độ ban đầu
+      let speed = 7;
+      let score = 0;
+
+      // Snake
+      let snake = [];
+      let snakeX = 10;
+      let snakeY = 10;
+      let velocityX = 0;
+      let velocityY = 0;
+      let snakeLength = 5;
+
+      // Food
+      let foodX = 5;
+      let foodY = 5;
+
+      // Khởi tạo
+      function init() {
+        snake = [];
+        snakeX = 10;
+        snakeY = 10;
+        velocityX = 0;
+        velocityY = 0;
+        snakeLength = 5;
+        score = 0;
+        scoreElement.textContent = score;
+        gameOver = false;
+        placeFood();
+      }
+
+      // Vòng lặp chính của trò chơi
+      function gameLoop() {
+        if (!gameRunning || gameOver) return;
+
+        updateGame();
+        drawGame();
+
+        setTimeout(gameLoop, 1000 / speed);
+      }
+
+      // Cập nhật trạng thái trò chơi
+      function updateGame() {
+        // Di chuyển rắn
+        snakeX += velocityX;
+        snakeY += velocityY;
+
+        // Kiểm tra va chạm với tường
+        if (
+          snakeX < 0 ||
+          snakeX >= tileCount ||
+          snakeY < 0 ||
+          snakeY >= tileCount
+        ) {
+          gameOver = true;
+          return;
+        }
+
+        // Kiểm tra va chạm với thân rắn
+        for (let i = 0; i < snake.length; i++) {
+          if (snake[i].x === snakeX && snake[i].y === snakeY) {
+            gameOver = true;
+            return;
+          }
+        }
+
+        // Thêm phần tử mới vào đầu rắn
+        snake.unshift({ x: snakeX, y: snakeY });
+
+        // Xóa phần tử cuối nếu rắn dài hơn snakeLength
+        while (snake.length > snakeLength) {
+          snake.pop();
+        }
+
+        // Kiểm tra ăn thức ăn
+        if (snakeX === foodX && snakeY === foodY) {
+          // Tăng điểm và độ dài
+          score++;
+          scoreElement.textContent = score;
+          snakeLength++;
+
+          // Tăng tốc độ sau mỗi 5 điểm
+          if (score % 5 === 0) {
+            speed += 1;
+          }
+
+          // Tạo thức ăn mới
+          placeFood();
+        }
+      }
+
+      // Vẽ trò chơi
+      function drawGame() {
+        // Xóa canvas
+        ctx.fillStyle = "black";
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // Vẽ thức ăn
+        ctx.fillStyle = "red";
+        ctx.fillRect(
+          foodX * gridSize,
+          foodY * gridSize,
+          gridSize - 2,
+          gridSize - 2
+        );
+
+        // Vẽ rắn
+        for (let i = 0; i < snake.length; i++) {
+          // Đầu rắn màu xanh đậm hơn
+          if (i === 0) {
+            ctx.fillStyle = "#00FF00";
+          } else {
+            // Gradient màu từ xanh lá đến xanh dương cho thân rắn
+            const green = 200 - Math.min(150, i * 5);
+            ctx.fillStyle = `rgb(0, ${green}, 50)`;
+          }
+          ctx.fillRect(
+            snake[i].x * gridSize,
+            snake[i].y * gridSize,
+            gridSize - 2,
+            gridSize - 2
+          );
+        }
+
+        // Hiển thị thông báo game over
+        if (gameOver) {
+          ctx.fillStyle = "white";
+          ctx.font = "30px Arial";
+          ctx.textAlign = "center";
+          ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2);
+        }
+      }
+
+      // Đặt thức ăn ngẫu nhiên
+      function placeFood() {
+        // Tạo vị trí ngẫu nhiên
+        foodX = Math.floor(Math.random() * tileCount);
+        foodY = Math.floor(Math.random() * tileCount);
+
+        // Đảm bảo thức ăn không trùng với vị trí của rắn
+        for (let i = 0; i < snake.length; i++) {
+          if (snake[i].x === foodX && snake[i].y === foodY) {
+            placeFood();
+            return;
+          }
+        }
+      }
+
+      // Xử lý sự kiện bàn phím
+      document.addEventListener("keydown", function (event) {
+        // Không cho phép di chuyển ngược lại
+        switch (event.key) {
+          case "ArrowUp":
+          case "w":
+          case "W":
+            if (velocityY === 0) {
+              velocityX = 0;
+              velocityY = -1;
+            }
+            break;
+          case "ArrowDown":
+          case "s":
+          case "S":
+            if (velocityY === 0) {
+              velocityX = 0;
+              velocityY = 1;
+            }
+            break;
+          case "ArrowLeft":
+          case "a":
+          case "A":
+            if (velocityX === 0) {
+              velocityX = -1;
+              velocityY = 0;
+            }
+            break;
+          case "ArrowRight":
+          case "d":
+          case "D":
+            if (velocityX === 0) {
+              velocityX = 1;
+              velocityY = 0;
+            }
+            break;
+        }
+
+        // Bắt đầu trò chơi khi nhấn phím lần đầu
+        if (!gameRunning && !gameOver && (velocityX !== 0 || velocityY !== 0)) {
+          startGame();
+        }
+      });
+
+      // Xử lý sự kiện nút bắt đầu
+      startBtn.addEventListener("click", function () {
+        if (!gameRunning) {
+          // Nếu chưa có hướng di chuyển, cho rắn di chuyển sang phải
+          if (velocityX === 0 && velocityY === 0) {
+            velocityX = 1;
+            velocityY = 0;
+          }
+          startGame();
+        }
+      });
+
+      // Xử lý sự kiện nút chơi lại
+      resetBtn.addEventListener("click", function () {
+        gameRunning = false;
+        init();
+        drawGame();
+      });
+
+      // Bắt đầu trò chơi
+      function startGame() {
+        if (!gameOver) {
+          gameRunning = true;
+          gameLoop();
+        }
+      }
+
+      // Khởi tạo và vẽ trò chơi lần đầu
+      init();
+      drawGame();
+    </script>
   </body>
 </html>
