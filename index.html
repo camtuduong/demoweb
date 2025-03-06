@@ -3,316 +3,391 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Game Con Rắn</title>
-    <style>
-      body {
-        font-family: "Arial", sans-serif;
-        text-align: center;
-        background-color: #f0f0f0;
-        margin: 0;
-        padding: 20px;
-      }
-
-      h1 {
-        color: #333;
-        margin-bottom: 10px;
-      }
-
-      .game-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-top: 20px;
-      }
-
-      canvas {
-        border: 2px solid #333;
-        background-color: #222;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .score-container {
-        margin-top: 10px;
-        font-size: 20px;
-        color: #333;
-      }
-
-      .controls {
-        margin-top: 20px;
-        background-color: #fff;
-        padding: 10px;
-        border-radius: 5px;
-        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-        max-width: 400px;
-      }
-
-      button {
-        padding: 8px 16px;
-        margin: 5px;
-        font-size: 16px;
-        cursor: pointer;
-        background-color: #4caf50;
-        color: white;
-        border: none;
-        border-radius: 4px;
-      }
-
-      button:hover {
-        background-color: #45a049;
-      }
-    </style>
+    <title>Giới Thiệu Bản Thân</title>
   </head>
   <body>
-    <h1>Game Con Rắn</h1>
-    <div class="game-container">
-      <canvas id="gameCanvas" width="400" height="400"></canvas>
-      <div class="score-container">
-        <span>Điểm: <span id="score">0</span></span>
+    <!-- Header Section -->
+    <header>
+      <div class="container">
+        <div class="header-content animated">
+          <img
+            src="/api/placeholder/400/400"
+            alt="Ảnh hồ sơ"
+            class="profile-img"
+          />
+          <h1 class="header-title">Nguyễn Văn A</h1>
+          <p class="header-subtitle">
+            Web Developer | UI/UX Designer | Digital Marketer
+          </p>
+          <div class="social-icons">
+            <a href="#"><i>🔗</i></a>
+            <a href="#"><i>📷</i></a>
+            <a href="#"><i>📱</i></a>
+            <a href="#"><i>📧</i></a>
+          </div>
+        </div>
       </div>
-      <div class="controls">
-        <p>Sử dụng các phím mũi tên hoặc WASD để di chuyển con rắn.</p>
-        <button id="startBtn">Bắt Đầu</button>
-        <button id="resetBtn">Chơi Lại</button>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+      <div class="container">
+        <div class="nav-container">
+          <a href="#" class="logo">Portfolio 4.0</a>
+          <div class="nav-links">
+            <a href="#about">Giới thiệu</a>
+            <a href="#skills">Kỹ năng</a>
+            <a href="#experience">Kinh nghiệm</a>
+            <a href="#portfolio">Dự án</a>
+            <a href="#contact">Liên hệ</a>
+          </div>
+        </div>
       </div>
-    </div>
+    </nav>
 
-    <script>
-      // Lấy các phần tử
-      const canvas = document.getElementById("gameCanvas");
-      const ctx = canvas.getContext("2d");
-      const scoreElement = document.getElementById("score");
-      const startBtn = document.getElementById("startBtn");
-      const resetBtn = document.getElementById("resetBtn");
+    <!-- About Section -->
+    <section id="about">
+      <div class="container">
+        <div class="section-title animated">
+          <h2>Giới Thiệu Bản Thân</h2>
+        </div>
+        <div class="about-content animated">
+          <div class="about-text">
+            <h3>Xin chào, tôi là Nguyễn Văn A</h3>
+            <p>
+              Tôi là một nhà phát triển web có đam mê sáng tạo và thiết kế trải
+              nghiệm người dùng tuyệt vời. Với hơn 5 năm kinh nghiệm trong ngành
+              công nghệ, tôi đã làm việc với nhiều dự án từ nhỏ đến lớn, giúp
+              khách hàng hiện thực hóa ý tưởng của họ.
+            </p>
+            <p>
+              Tôi luôn cập nhật những công nghệ mới nhất và xu hướng thiết kế để
+              đảm bảo sản phẩm của mình luôn đáp ứng được những tiêu chuẩn cao
+              nhất về hiệu suất và trải nghiệm người dùng.
+            </p>
+            <div class="about-info">
+              <div class="info-item">
+                <span class="info-title">Tuổi:</span>
+                <span>28</span>
+              </div>
+              <div class="info-item">
+                <span class="info-title">Email:</span>
+                <span>nguyenvana@example.com</span>
+              </div>
+              <div class="info-item">
+                <span class="info-title">Điện thoại:</span>
+                <span>0123 456 789</span>
+              </div>
+              <div class="info-item">
+                <span class="info-title">Địa chỉ:</span>
+                <span>Hà Nội, Việt Nam</span>
+              </div>
+              <div class="info-item">
+                <span class="info-title">Tình trạng:</span>
+                <span>Sẵn sàng nhận dự án mới</span>
+              </div>
+            </div>
+          </div>
+          <div class="image-grid">
+            <img
+              src="/api/placeholder/300/200"
+              alt="Hình ảnh 1"
+              class="grid-img"
+            />
+            <img
+              src="/api/placeholder/300/200"
+              alt="Hình ảnh 2"
+              class="grid-img"
+            />
+            <img
+              src="/api/placeholder/300/200"
+              alt="Hình ảnh 3"
+              class="grid-img"
+            />
+            <img
+              src="/api/placeholder/300/200"
+              alt="Hình ảnh 4"
+              class="grid-img"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Kích thước của mỗi ô
-      const gridSize = 20;
-      const tileCount = canvas.width / gridSize;
+    <!-- Skills Section -->
+    <section id="skills" style="background-color: #f8f9fa">
+      <div class="container">
+        <div class="section-title animated">
+          <h2>Kỹ Năng Chuyên Môn</h2>
+        </div>
+        <div class="skills-container animated">
+          <div class="skill-card">
+            <div class="skill-icon">🌐</div>
+            <h3 class="skill-title">Front-end Development</h3>
+            <p class="skill-desc">
+              HTML5, CSS3, JavaScript, React, Vue.js, Bootstrap, Tailwind CSS,
+              SASS
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">💻</div>
+            <h3 class="skill-title">Back-end Development</h3>
+            <p class="skill-desc">
+              Node.js, PHP, Python, Express, Laravel, Django, RESTful APIs
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🎨</div>
+            <h3 class="skill-title">UI/UX Design</h3>
+            <p class="skill-desc">
+              Figma, Adobe XD, Sketch, Photoshop, Illustrator, Wireframing,
+              Prototyping
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📱</div>
+            <h3 class="skill-title">Mobile Development</h3>
+            <p class="skill-desc">
+              React Native, Flutter, iOS, Android, Responsive Design
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">📊</div>
+            <h3 class="skill-title">Database</h3>
+            <p class="skill-desc">
+              MySQL, MongoDB, PostgreSQL, Firebase, GraphQL
+            </p>
+          </div>
+          <div class="skill-card">
+            <div class="skill-icon">🚀</div>
+            <h3 class="skill-title">DevOps</h3>
+            <p class="skill-desc">
+              Git, GitHub, Docker, AWS, Heroku, Netlify, CI/CD
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Trạng thái trò chơi
-      let gameRunning = false;
-      let gameOver = false;
+    <!-- Experience Section -->
+    <section id="experience">
+      <div class="container">
+        <div class="section-title animated">
+          <h2>Kinh Nghiệm & Học Vấn</h2>
+        </div>
+        <div class="timeline animated">
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2020 - Hiện tại</div>
+              <h3 class="timeline-title">Senior Web Developer</h3>
+              <p>Công ty ABC Technology</p>
+              <p>
+                Phát triển và duy trì các ứng dụng web quy mô lớn, tối ưu hóa
+                hiệu suất và trải nghiệm người dùng. Lãnh đạo nhóm phát triển
+                front-end.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2018 - 2020</div>
+              <h3 class="timeline-title">Web Developer</h3>
+              <p>XYZ Digital Studio</p>
+              <p>
+                Phát triển giao diện người dùng cho các trang web thương mại
+                điện tử và ứng dụng web. Tích hợp API và xây dựng tính năng
+                tương tác.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2016 - 2018</div>
+              <h3 class="timeline-title">Junior Developer</h3>
+              <p>StartUp Innovation</p>
+              <p>
+                Phát triển trang web và ứng dụng di động cho các startup công
+                nghệ. Hợp tác với đội ngũ thiết kế để tạo ra sản phẩm chất lượng
+                cao.
+              </p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-content">
+              <div class="timeline-date">2014 - 2016</div>
+              <h3 class="timeline-title">Cử nhân Khoa học Máy tính</h3>
+              <p>Đại học Công nghệ</p>
+              <p>
+                Chuyên ngành Phát triển Phần mềm với GPA 3.8/4.0. Tham gia nhiều
+                dự án học thuật và hackathon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Tốc độ ban đầu
-      let speed = 7;
-      let score = 0;
+    <!-- Portfolio Section -->
+    <section id="portfolio" style="background-color: #f8f9fa">
+      <div class="container">
+        <div class="section-title animated">
+          <h2>Các Dự Án Tiêu Biểu</h2>
+        </div>
+        <div class="portfolio-container animated">
+          <div class="portfolio-item">
+            <img
+              src="/api/placeholder/400/300"
+              alt="Dự án 1"
+              class="portfolio-img"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Ứng dụng E-commerce</h3>
+              <div class="portfolio-category">Web Development</div>
+              <a href="#" class="portfolio-link">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="/api/placeholder/400/300"
+              alt="Dự án 2"
+              class="portfolio-img"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Dashboard Analytics</h3>
+              <div class="portfolio-category">UI/UX Design</div>
+              <a href="#" class="portfolio-link">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="/api/placeholder/400/300"
+              alt="Dự án 3"
+              class="portfolio-img"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Ứng dụng di động</h3>
+              <div class="portfolio-category">Mobile Development</div>
+              <a href="#" class="portfolio-link">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="/api/placeholder/400/300"
+              alt="Dự án 4"
+              class="portfolio-img"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Website Công ty</h3>
+              <div class="portfolio-category">Web Development</div>
+              <a href="#" class="portfolio-link">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="/api/placeholder/400/300"
+              alt="Dự án 5"
+              class="portfolio-img"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Ứng dụng SaaS</h3>
+              <div class="portfolio-category">Full Stack</div>
+              <a href="#" class="portfolio-link">Xem chi tiết</a>
+            </div>
+          </div>
+          <div class="portfolio-item">
+            <img
+              src="/api/placeholder/400/300"
+              alt="Dự án 6"
+              class="portfolio-img"
+            />
+            <div class="portfolio-overlay">
+              <h3 class="portfolio-title">Landing Page</h3>
+              <div class="portfolio-category">UI/UX Design</div>
+              <a href="#" class="portfolio-link">Xem chi tiết</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-      // Snake
-      let snake = [];
-      let snakeX = 10;
-      let snakeY = 10;
-      let velocityX = 0;
-      let velocityY = 0;
-      let snakeLength = 5;
-
-      // Food
-      let foodX = 5;
-      let foodY = 5;
-
-      // Khởi tạo
-      function init() {
-        snake = [];
-        snakeX = 10;
-        snakeY = 10;
-        velocityX = 0;
-        velocityY = 0;
-        snakeLength = 5;
-        score = 0;
-        scoreElement.textContent = score;
-        gameOver = false;
-        placeFood();
-      }
-
-      // Vòng lặp chính của trò chơi
-      function gameLoop() {
-        if (!gameRunning || gameOver) return;
-
-        updateGame();
-        drawGame();
-
-        setTimeout(gameLoop, 1000 / speed);
-      }
-
-      // Cập nhật trạng thái trò chơi
-      function updateGame() {
-        // Di chuyển rắn
-        snakeX += velocityX;
-        snakeY += velocityY;
-
-        // Kiểm tra va chạm với tường
-        if (
-          snakeX < 0 ||
-          snakeX >= tileCount ||
-          snakeY < 0 ||
-          snakeY >= tileCount
-        ) {
-          gameOver = true;
-          return;
-        }
-
-        // Kiểm tra va chạm với thân rắn
-        for (let i = 0; i < snake.length; i++) {
-          if (snake[i].x === snakeX && snake[i].y === snakeY) {
-            gameOver = true;
-            return;
-          }
-        }
-
-        // Thêm phần tử mới vào đầu rắn
-        snake.unshift({ x: snakeX, y: snakeY });
-
-        // Xóa phần tử cuối nếu rắn dài hơn snakeLength
-        while (snake.length > snakeLength) {
-          snake.pop();
-        }
-
-        // Kiểm tra ăn thức ăn
-        if (snakeX === foodX && snakeY === foodY) {
-          // Tăng điểm và độ dài
-          score++;
-          scoreElement.textContent = score;
-          snakeLength++;
-
-          // Tăng tốc độ sau mỗi 5 điểm
-          if (score % 5 === 0) {
-            speed += 1;
-          }
-
-          // Tạo thức ăn mới
-          placeFood();
-        }
-      }
-
-      // Vẽ trò chơi
-      function drawGame() {
-        // Xóa canvas
-        ctx.fillStyle = "black";
-        ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        // Vẽ thức ăn
-        ctx.fillStyle = "red";
-        ctx.fillRect(
-          foodX * gridSize,
-          foodY * gridSize,
-          gridSize - 2,
-          gridSize - 2
-        );
-
-        // Vẽ rắn
-        for (let i = 0; i < snake.length; i++) {
-          // Đầu rắn màu xanh đậm hơn
-          if (i === 0) {
-            ctx.fillStyle = "#00FF00";
-          } else {
-            // Gradient màu từ xanh lá đến xanh dương cho thân rắn
-            const green = 200 - Math.min(150, i * 5);
-            ctx.fillStyle = `rgb(0, ${green}, 50)`;
-          }
-          ctx.fillRect(
-            snake[i].x * gridSize,
-            snake[i].y * gridSize,
-            gridSize - 2,
-            gridSize - 2
-          );
-        }
-
-        // Hiển thị thông báo game over
-        if (gameOver) {
-          ctx.fillStyle = "white";
-          ctx.font = "30px Arial";
-          ctx.textAlign = "center";
-          ctx.fillText("Game Over!", canvas.width / 2, canvas.height / 2);
-        }
-      }
-
-      // Đặt thức ăn ngẫu nhiên
-      function placeFood() {
-        // Tạo vị trí ngẫu nhiên
-        foodX = Math.floor(Math.random() * tileCount);
-        foodY = Math.floor(Math.random() * tileCount);
-
-        // Đảm bảo thức ăn không trùng với vị trí của rắn
-        for (let i = 0; i < snake.length; i++) {
-          if (snake[i].x === foodX && snake[i].y === foodY) {
-            placeFood();
-            return;
-          }
-        }
-      }
-
-      // Xử lý sự kiện bàn phím
-      document.addEventListener("keydown", function (event) {
-        // Không cho phép di chuyển ngược lại
-        switch (event.key) {
-          case "ArrowUp":
-          case "w":
-          case "W":
-            if (velocityY === 0) {
-              velocityX = 0;
-              velocityY = -1;
-            }
-            break;
-          case "ArrowDown":
-          case "s":
-          case "S":
-            if (velocityY === 0) {
-              velocityX = 0;
-              velocityY = 1;
-            }
-            break;
-          case "ArrowLeft":
-          case "a":
-          case "A":
-            if (velocityX === 0) {
-              velocityX = -1;
-              velocityY = 0;
-            }
-            break;
-          case "ArrowRight":
-          case "d":
-          case "D":
-            if (velocityX === 0) {
-              velocityX = 1;
-              velocityY = 0;
-            }
-            break;
-        }
-
-        // Bắt đầu trò chơi khi nhấn phím lần đầu
-        if (!gameRunning && !gameOver && (velocityX !== 0 || velocityY !== 0)) {
-          startGame();
-        }
-      });
-
-      // Xử lý sự kiện nút bắt đầu
-      startBtn.addEventListener("click", function () {
-        if (!gameRunning) {
-          // Nếu chưa có hướng di chuyển, cho rắn di chuyển sang phải
-          if (velocityX === 0 && velocityY === 0) {
-            velocityX = 1;
-            velocityY = 0;
-          }
-          startGame();
-        }
-      });
-
-      // Xử lý sự kiện nút chơi lại
-      resetBtn.addEventListener("click", function () {
-        gameRunning = false;
-        init();
-        drawGame();
-      });
-
-      // Bắt đầu trò chơi
-      function startGame() {
-        if (!gameOver) {
-          gameRunning = true;
-          gameLoop();
-        }
-      }
-
-      // Khởi tạo và vẽ trò chơi lần đầu
-      init();
-      drawGame();
-    </script>
+    <!-- Contact Section -->
+    <section id="contact">
+      <div class="container">
+        <div class="section-title animated">
+          <h2>Liên Hệ Với Tôi</h2>
+        </div>
+        <div class="contact-container animated">
+          <div class="contact-info">
+            <div class="contact-item">
+              <div class="contact-icon">📍</div>
+              <div class="contact-text">
+                <h4>Địa chỉ</h4>
+                <p>123 Đường ABC, Quận XYZ, Hà Nội, Việt Nam</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📱</div>
+              <div class="contact-text">
+                <h4>Điện thoại</h4>
+                <p>+84 123 456 789</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">📧</div>
+              <div class="contact-text">
+                <h4>Email</h4>
+                <p>nguyenvana@example.com</p>
+              </div>
+            </div>
+            <div class="contact-item">
+              <div class="contact-icon">🔗</div>
+              <div class="contact-text">
+                <h4>Website</h4>
+                <p>www.nguyenvana.com</p>
+              </div>
+            </div>
+          </div>
+          <div class="contact-form">
+            <form>
+              <div class="form-group">
+                <label for="name">Họ và tên</label>
+                <input
+                  type="text"
+                  id="name"
+                  class="form-control"
+                  placeholder="Nhập họ và tên của bạn"
+                />
+              </div>
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input
+                  type="email"
+                  id="email"
+                  class="form-control"
+                  placeholder="Nhập email của bạn"
+                />
+              </div>
+              <div class="form-group">
+                <label for="subject">Tiêu đề</label>
+                <input
+                  type="text"
+                  id="subject"
+                  class="form-control"
+                  placeholder="Nhập tiêu đề"
+                />
+              </div>
+              <div class="form-group">
+                <label for="message">Nội dung</label>
+                <textarea
+                  id="message"
+                  class="form-control"
+                  placeholder="Nhập nội dung tin nhắn"
+                ></textarea>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
   </body>
 </html>
